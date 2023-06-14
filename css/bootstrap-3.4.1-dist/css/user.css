@@ -2292,6 +2292,9 @@ span.separator {
 }
 /* iphone SE */
 @media(min-width: 361px) and (max-width: 383px) {
+    body {
+        font-size: 16px;
+    }
     .header {
         top: 0;
     }
@@ -2526,6 +2529,9 @@ span.separator {
 }
 /* iphone 12 pro */
 @media(min-width: 384px) and (max-width: 400px) {
+    body {
+        font-size: 16px;
+    }
     .header {
         top: 0;
     }
@@ -2756,6 +2762,9 @@ span.separator {
 }
 /* Samsung Galaxy A51/71*/
 @media(min-width: 401px) and (max-width: 439px) {
+    body {
+        font-size: 16px;
+    }
     .header {
         top: 0;
     }
@@ -2991,6 +3000,9 @@ span.separator {
 /**** SUPER EXTRA SMALL DEVICES *****/       
 /* Samsung Galaxy S8 */
 @media(min-width: 321px) and (max-width: 360px) {
+    body {
+        font-size: 16px;
+    }
     .header {
         top: 0;
     }
@@ -3004,7 +3016,7 @@ span.separator {
         font-size: 20px;
     }
     .loader {
-        left: 22%;
+        left: 25%;
     }
     .overlay {
         width: 50%;
