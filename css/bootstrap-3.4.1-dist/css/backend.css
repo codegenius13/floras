@@ -1,0 +1,465 @@
+/** ADD AND DELETE BUTTON **/
+.add-btn,
+.delete-btn{
+   margin-top: 2em;
+   display: inline-block;
+   padding: 10px 30px 10px 30px;
+   border-radius: 30px;
+   cursor: pointer;
+   text-transform: capitalize;
+   transition: .2s linear;
+}
+.add-btn{
+   background-color: black;
+   color: white;
+}
+.delete-btn{
+   background-color: red;
+   color: white;
+   border: none;
+}
+.add-btn:hover{
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+}
+.delete-btn:hover{
+    background-color: transparent;
+    color: red;
+    border: 1px solid red;
+}
+.disabled{
+    opacity: .5;
+    user-select: none;
+    pointer-events: none;
+}
+/** END ADD AND DELETE BUTTON **/
+.header-two {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    z-index: 999;
+    background-color: rgb(228, 170, 95);
+}
+.header-two.sticky {
+    top: 0;
+    padding: 10px;
+    background-color: rgb(228, 170, 95);
+    transition: .5s;
+}
+.header-two nav ul {
+    display: flex;
+    margin-right: 30px;
+    margin-top: 30px;
+    list-style: none;
+}
+.header-two nav ul li {
+    margin-right: 30px;
+}
+.header-two nav ul li a {
+    color: black;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+.header-two nav ul li a.active {
+    color: white;
+    border-bottom: 1px solid white;
+}
+.header-two nav ul li a:hover {
+    transition: .3s;
+    color: white;
+    border-bottom: 1px solid white;
+}
+
+.box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 350px);
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4em;
+    margin-top: 50px;
+}
+.box-container .box{
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0px 2px 2px 0px rgb(228, 170, 95);
+    background-color: white;
+    z-index: 1;
+    width: 350px;
+    height: 470px;
+}
+.box-container .box::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgb(228, 170, 95);
+    clip-path: var(--clip-path-1);
+    transform: scaleY(0.3);
+    transform-origin: bottom;
+    z-index: -1;
+    transition: .4s;
+}
+:root {
+    --clip-path-1: polygon(10% 0%, 90% 0%, 100% 100%, 0 100%);
+    --clip-path-2: polygon(0 0%, 100% 0%, 100% 100%, 0 100%);
+}
+.box-container .box:hover::after {
+    clip-path: var(--clip-path-2);
+    transform: scaleY(1);
+}
+.box-container .box img{
+    width: 250px;
+    height: 250px;
+    margin-top: 50px;
+    margin-bottom: 2rem;
+}
+.box-container .box .glyphicon-eye-open,
+.box-container .box .glyphicon-shopping-cart{
+   position: absolute;
+   top: 0;
+   height: 4.5rem;
+   width: 4.5rem;
+   line-height: 4rem;
+   border: 1px solid white;
+   cursor: pointer;
+   font-size: 2rem;
+   color: white;
+   transition: .2s linear;
+   text-align: center;
+   border-radius: 50px;
+}
+.box-container .box .glyphicon-eye-open:hover,
+.box-container .box .glyphicon-shopping-cart:hover {
+   color: white;
+   border: 1px solid white;
+}
+.box-container .box .glyphicon-eye-open{
+    left: 0;
+}
+.box-container .box .glyphicon-shopping-cart {
+    right: 0;
+    background-color: transparent;
+}
+.box-container .box .cat{
+    font-size: 20px;
+    color: black;
+}
+.box-container .box .cat:hover{
+    color: white;
+    text-decoration: underline;
+}
+.box-container .box .name{
+    font-size: 2rem;
+    color: black;
+    margin:1rem 0;
+}
+.box-container .box .flex{
+    display: flex;
+    align-items: center;
+    gap:1rem;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.box-container .box .flex .price{
+    margin-right: auto;
+    font-size: 25px;
+    color: black;
+}
+.box-container .box .flex .price span{
+    color: black;
+    font-size: 25px;
+}
+.box-container .box .flex .qty{
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 20px;
+    color: black;
+    outline: none;
+}
+.box-container .box .flex .glyphicon-edit{
+    width: 5rem;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    font-size: 1.8rem;
+    height: 4.5rem;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.box-container .box:hover .flex .glyphicon-edit{
+    border: 1px solid white;
+    color: white;
+    transition: .3s;
+}
+.box-container .box .glyphicon-remove{
+    position: absolute;
+    top: 0; 
+    right: 0;
+    color: white;
+    border: 1px solid white;
+    background-color: transparent;
+    line-height:4rem;
+    height: 4.3rem;
+    width: 4.5rem;
+    cursor: pointer;
+    font-size: 2rem;
+    border-radius: 50px;
+}
+.box-container .box:hover .glyphicon-remove{
+    border: 1px solid red;
+    color: red;
+    transition: .3s;
+}
+.box-container .box .sub-total{
+    margin-top: 2rem;
+    margin-left: 20px;
+    font-size: 23px;
+    color: black;
+}
+.box-container .box .sub-total span{
+    color: black;
+}
+.more-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    text-align: center;
+}
+.comments p {
+    text-align: center;
+    color: red;
+    border: 2px solid black;
+    padding: 20px;
+    font-size: 25px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.preview-box-two{
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background: #fff;
+    max-width: 400px;
+    height: 500px;
+    width: 100%;
+    z-index: 999;
+    display: none;
+    pointer-events: none;
+    border-radius: 3px;
+    padding: 0 5px 5px 5px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+    overflow: auto;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+    transition: all 0.3s ease;
+}
+.preview-box-two.show{
+    display: block;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+    transition: all 0.3s ease;
+}
+.preview-box-two .details-two{
+    padding: 13px 15px 13px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.details-two .title-two{
+    display: flex;
+    font-weight: 600;
+}
+.details-two .title-two p{
+    font-weight: 600;
+    margin-left: 5px;
+    text-transform: capitalize;
+}
+.details-two .icon{
+    color: rgb(228, 170, 95);
+    font-style: 22px;
+    cursor: pointer;
+}
+.preview-box-two .image-box-two{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.image-box-two img{
+    width: 300px;
+    height: 300px;
+    margin-top: 20px;
+}
+.cat-price {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 30px;
+}
+.shadow-two{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    display: none;
+    background: rgba(0,0,0,0.4);
+}
+.shadow-two.show{
+    display: block;
+}
+/** CART SECTION **/
+.products .cart-total{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    padding: 20px;
+}
+.products .cart-total p{
+    font-size: 2.5rem;
+    color: black;
+}
+.products .cart-total p span{
+    color: red;
+}
+.products .cart-total .add-btn{
+    margin-top: 0;
+    margin-left: 100px;
+}
+.more-btn .delete-btn{
+    margin-top: 0;
+    margin-right: 20px;
+    border: none;
+}
+.more-btn .delete-btn:hover{
+    border: 1px solid red;
+}
+.cart {
+    padding-top: 150px;
+}
+.search-form form{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+    gap: 1.3rem;
+    width: 40%;
+    border-bottom: 2px solid black;
+    color: black;
+    padding: 5px 30px 5px 30px;
+    margin-top: 30px;
+}
+.search-form form .box{
+    width: 100%;
+    color: black;
+    border: none;
+    outline: none;
+    margin-left: 20px;
+}
+.search-form form .glyphicon-search{
+    background-color: rgb(228, 170, 95);
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    border: transparent;
+    padding: 10px;
+}
+.search-form form .glyphicon-search:hover{
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+    transition: .4s;
+}
+.checkout form{
+    max-width: 50rem;
+    margin:0 auto;
+    box-shadow:  0px 2px 2px 0px rgb(228, 170, 95);
+    padding: 20px;
+}
+.checkout form h3{
+    padding: 20px;
+    color: black;
+}
+.checkout form .cart-items{
+    background-color: rgb(228, 170, 95);
+    padding: 20px;
+    padding-top: 0;
+}
+.checkout form .cart-items h3{
+    color: black;
+}
+.checkout form .cart-items p{
+    display: flex;
+    align-items: center;
+    gap:1.5rem;
+    justify-content: space-between;
+    margin:1rem 0;
+    line-height: 1.5;
+}
+.checkout form .cart-items p .name{
+    color: rgba(1, 17, 1, 0.911);
+}
+.checkout form .cart-items p .price{
+    color: white;
+}
+.checkout form .cart-items .grand-total{
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.checkout form .cart-items .grand-total .price{
+    color: rgb(228, 170, 95);
+}
+.checkout form .user-info p{ 
+    line-height: 1.5;
+    padding: 20px;
+}
+.checkout form .user-info p i{
+    color: black;
+    margin-right: 1rem;
+    opacity: .5;
+}
+.checkout form .user-info p span{
+    color: black;
+}
+.checkout form .user-info .box{
+    width: 100%;
+    border-bottom: 2px solid black;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 20px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    outline: none;
+}
+.place-btn {
+    background-color: green;
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    margin-top: 10px;
+}
+.place-btn:hover {
+    background-color: transparent;
+    border: 1px solid green;
+    color: green;
+    transition: .4s;
+}
+/** END CART SECTION **/

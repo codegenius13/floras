@@ -1,0 +1,672 @@
+<!--<?php
+include 'components/connect.php';
+session_start();
+if(isset($_SESSION['user_id'])){
+   $user_id = $_SESSION['user_id'];
+}else{
+   $user_id = '';
+};
+include 'components/add_cart.php';
+?>
+<?php
+if(isset($message)){
+   foreach($message as $message){
+      echo '
+      <div class="message">
+         <span>'.$message.'</span>
+         <i class="glyphicon glyphicon-remove" onclick="this.parentElement.remove();"></i>
+      </div>
+      ';
+   }
+}
+?>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flora's Interior</title>
+    <!-- STYLES SECTION-->
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/xml.png" type="image/svg+xml">
+
+     <!-- Normalize -->
+     <link rel="stylesheet" href="css/normalize.css">
+
+     <!-- Bootstrap CDN -->
+     <link rel="stylesheet" href="css/bootstrap-3.4.1-dist/css/bootstrap.css">
+
+     <!-- Stylesheet -->
+     <link rel="stylesheet" href="css/bootstrap-3.4.1-dist/css/user.css">
+     <link rel="stylesheet" href="css/bootstrap-3.4.1-dist/css/backend.css">
+
+    <!-- END STYLES SECTION-->
+</head>
+<body>
+  <!-- PRELOADER -->
+    <div class="preloader">
+      <div class="loader">
+        <img src="images/grey_style.gif" alt="img" id="load">
+        <h1>flo<span>ra's</span></h1>
+      </div>
+     </div>
+     <!-- END PRELOADER -->
+
+     <!-- SCROLL BUTTON -->
+     <a href="#">
+        <button id="myBtn" title="scroll">
+         <i class="glyphicon glyphicon-chevron-up"></i>
+        </button>
+      </a>
+     <!-- END SCROLL BUTTON-->
+
+    <!-- HEADER SECTION -->
+  <div class="review">
+  <div class="topbar">
+    <div class="container hidden-sm hidden-xs">
+      <address class="topbar-item">
+        <i class="glyphicon glyphicon-map-marker"></i> <span class="span"> Welcome to floRA's interior </span>
+      </address>
+      <div class="separator"></div>
+      <div class="topbar-item item-2">
+        <i class="glyphicon glyphicon-calendar"></i> <span class="span">Daily : 8.00 am to 10.00 pm</span>
+      </div>
+      <div class="separator"></div>
+      <div class="topbar-item">
+        <a href="tel: +234 814 558 4399"><i class="glyphicon glyphicon-earphone"></i> +234 814 558 4399</a>
+      </div>
+      <div class="separator"></div>
+      <div class="topbar-item">
+      <a href="mailto: ikuerowob@gmail.com"><i class="glyphicon glyphicon-envelope"></i> ikuerowob@gmail.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="header">
+    
+    <div class="logo">
+        <a href="#"><h1>flo<span>RA's</span></h1></a>
+    </div>
+    <nav class="hidden-sm hidden-xs">
+        <ul>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#purchases">Purchases</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <!--<?php
+            $count_cart_items = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
+            $count_cart_items->execute([$user_id]);
+            $total_cart_items = $count_cart_items->rowCount();
+            ?>-->
+            <a href="cart.php" class="btn btn-secondary">
+              <span class="text text-1">View Cart <i class="glyphicon glyphicon-shopping-cart"></i><span>(<!--<?= $total_cart_items; ?>-->0)</span></span>
+              <span class="text text-2" aria-hidden="true">View Cart <i class="glyphicon glyphicon-shopping-cart"></i><span>(<!--<?= $total_cart_items; ?>-->0)</span></span>
+            </a>
+        </ul>
+    </nav>
+    <div class="toggle visible-sm visible-xs">
+         <!--<?php
+            $count_cart_items = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
+            $count_cart_items->execute([$user_id]);
+            $total_cart_items = $count_cart_items->rowCount();
+          ?>-->
+       <a href="cart.php"><i class="glyphicon glyphicon-shopping-cart"></i><span>(<!--<?= $total_cart_items; ?>-->0)</span></a>
+       <i class="glyphicon glyphicon-menu-hamburger" id="show"></i>
+    </div>
+    </div>
+     <div class="sidebar">
+      <div class="sidebar-content">
+        <div class="close-icon">
+          <i class="glyphicon glyphicon-remove" id="remove"></i>
+        </div>
+        <div class="sidebar-dis">
+        <div class="logo">
+          <a href="#"><h1>flo<span>RA's</span></h1></a>
+        </div>
+        <nav>
+          <ul>
+            <hr id="line">
+            <li ><span class="separator"></span><a href="#home" class="active">Home</a></li>
+            <hr id="line">
+            <li><span class="separator"></span><a href="#about">About</a></li>
+            <hr id="line">
+            <li><span class="separator"></span><a href="#gallery">Gallery</a></li>
+            <hr id="line">
+            <li><span class="separator"></span><a href="#purchases">Purchases</a></li>
+            <hr id="line">
+            <li><span class="separator"></span><a href="#contact">Contact</a></li>
+            <hr id="line">
+        </ul>
+        </nav>
+        <div class="sidebar-footer">
+          <h1>Visit</h1>
+          <address class="topbar-item">
+            <i class="glyphicon glyphicon-map-marker"></i>
+            <span class="span">
+              Welcome to floRA's interior
+            </span>
+          </address>
+          <div class="topbar-item item-2">
+            <i class="glyphicon glyphicon-calendar"></i>
+            <span class="span">Daily : 8.00 am to 10.00 pm</span>
+          </div>
+          <div class="topbar-item">
+            <a href="tel: +1 123 456 7890"><i class="glyphicon glyphicon-earphone"></i>+1 123 456 7890</a>
+          </div>
+          <hr id="line">
+          <h1>Email Us</h1>
+          <div class="topbar-item">
+            <a href="mailto: florasinterior@gmail.com"><i class="glyphicon glyphicon-envelope"></i>florasinterior@gmail.com</a>
+          </div>
+          <div class="socials">
+            <a href="#"><img src="images/facebook.svg" alt="img" id="social-icon"></a>
+            <a href="#"><img src="images/instagram.svg" alt="img" id="social-icon"></a>
+            <a href="#"><img src="images/twitter.svg" alt="img" id="social-icon"></a>
+            <a href="#"><img src="images/youtube.svg" alt="img" id="social-icon"></a>
+          </div>
+        </div>
+        </div> 
+      </div>
+      <div class="overlay"></div>
+    </div>
+    <section class="landing sections"  id="home">
+      <div class="land-title">
+        <h1>Modern Interior Design Studio</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+          Corrupti asperiores repellat ex? Exercitationem, libero id vero
+          ratione ipsam nesciunt eius rerum nobis 
+        </p>
+        <div class="start">
+          <a href="shop.php" class="btn btn-secondary">
+            <span class="text text-1">Explore Shop <i class="glyphicon glyphicon-shopping-cart"></i></span>
+            <span class="text text-2" aria-hidden="true">Explore Shop <i class="glyphicon glyphicon-shopping-cart"></i></span>
+          </a>
+          <a href="#about" class="btn btn-secondary">
+            <span class="text text-1">Learn More &#8595;</span>
+            <span class="text text-2" aria-hidden="true">Learn More &#8595;</span>
+          </a>
+        </div>
+      </div>
+      <img src="images/sofa.png" alt="img" id="sofa">
+    </section>
+    </div>
+    <!-- END HEADER SECTION -->
+
+    <!-- BODY SECTION -->
+   <section class="sections about" id="about">
+      <div class="about-title">
+        <h1>About Us</h1>
+        <img src="images/separator.svg" alt="img" id="separator">
+      </div>
+      <div class="about-info">
+        <div class="about-text">
+        <h2>Why Choose Us</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          Eius nam impedit iure veritatis deleniti laboriosam, illum 
+        </p>
+        <div class="about-tile">
+          <div class="about-display">
+            <img src="images/step-2.png" alt="img" id="icon">
+            <h4>Fast & Free Delivery</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium harum,
+              dolores beatae voluptatibus  
+            </p>
+          </div>
+          <div class="about-display">
+            <i class="glyphicon glyphicon-shopping-cart"></i>
+            <h4>Easy Shop</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium harum,
+              dolores beatae voluptatibus  
+            </p>
+          </div>
+        </div>
+        <div class="about-tile">
+          <div class="about-display">
+            <img src="images/clock-icon.png" alt="img" id="icon">
+            <h4>24/7 Support</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium harum,
+              dolores beatae voluptatibus  
+            </p>
+          </div>
+          <div class="about-display">
+            <img src="images/phone-icon.png" alt="img" id="icon">
+            <h4>Quick Reach Out</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium harum,
+              dolores beatae voluptatibus 
+            </p>
+          </div>
+        </div>
+        </div>
+        <div class="about-img">
+          <div>
+          <img src="images/img-pattern.svg" alt="img" id="pattern">
+          <img src="images/interior 1.jpg" alt="img" id="house">
+          </div>
+        </div>
+      </div>
+       <section class="about-assure">
+         <div class="about-assure-img">
+          <img src="images/img-pattern.svg" alt="img" id="pattern2">
+          <div>
+          <img src="images/interior 1.jpg" alt="img" id="int1">
+          <img src="images/interior 2.jpg" alt="img" id="int2">
+          <img src="images/interior 3.jpg" alt="img" id="int3">
+          </div>
+         </div>
+         <div class="about-assure-text">
+            <h2>We help you make modern design</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum placeat,
+               ex eligendi omnis minima incidunt quibusdam hic quis, itaque modi voluptas. 
+            </p>
+            <div class="about-list">
+              <ul>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                </li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                </li>
+              </ul>
+            </div>
+            <div class="about-list">
+              <ul>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                </li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                </li>
+              </ul>
+            </div>
+            <a href="#" class="btn btn-secondary">
+              <span class="text text-1">Read More &#8594;</span>
+              <span class="text text-2" aria-hidden="true">Read More &#8594;</span>
+            </a>
+         </div>
+      </section>
+    </section>
+
+    <section class="section gallery" id="gallery">
+      <div class="about-title">
+        <h1>Gallery</h1>
+        <img src="images/separator.svg" alt="img" id="separator">
+      </div>
+      <div class="wrapper">
+        <nav>
+          <div class="items">
+            <span class="item active" data-name="all">All</span>
+            <span class="item" data-name="chandelier">Chandellier</span>
+            <span class="item" data-name="lamp">Lamp</span>
+            <span class="item" data-name="table">Dining</span>
+            <span class="item" data-name="sofa">Sofa</span>
+            <span class="item" data-name="couch">Couch</span>
+          </div>
+        </nav>
+      </div>
+      <div class="gal">
+          <div class="image" data-name="chandelier">
+            <i class="glyphicon glyphicon-eye-open cont-rev"></i>
+            <img src="images/chandelier icon.png" alt="img" class="cont-ic">
+            <div class="cont-til">
+              <h3 class="ti">Chandellier</h3>
+              <p class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Modi alias suscipit
+              </p>
+            </div>
+              <img src="images/lamp 2.png" alt="img" class="cont-img">
+          </div>
+          <div class="image" data-name="Lamp">
+            <i class="glyphicon glyphicon-eye-open cont-rev"></i>
+            <img src="images/lamp icon.png" alt="img" class="cont-ic">
+            <div class="cont-til">
+              <h3 class="ti">Bedroom Lamp</h3>
+              <p class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Modi alias suscipit
+              </p>
+            </div>
+              <img src="images/lamp.png" alt="img" class="cont-img">
+          </div>
+          <div class="image" data-name="table">
+            <i class="glyphicon glyphicon-eye-open cont-rev"></i>
+            <img src="images/chair.png" alt="img" class="cont-ic">
+            <div class="cont-til">
+              <h3 class="ti">Dining Table & Chair</h3>
+              <p class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Modi alias suscipit
+              </p>
+            </div>
+              <img src="images/diner.png" alt="img" class="cont-img">
+          </div>
+          <div class="image" data-name="sofa">
+            <i class="glyphicon glyphicon-eye-open cont-rev"></i>
+            <img src="images/sofa icon.png" alt="img" class="cont-ic">
+            <div class="cont-til">
+              <h3 class="ti">Sofa</h3>
+              <p class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Modi alias suscipit
+              </p>
+            </div>
+              <img src="images/sofa.png" alt="img" class="cont-img">
+        </div>
+        <div class="image" data-name="lamp">
+          <i class="glyphicon glyphicon-eye-open cont-rev"></i>
+          <img src="images/lamp icon.png" alt="img" class="cont-ic">
+          <div class="cont-til">
+            <h3 class="ti">Bedroom Lamp</h3>
+            <p class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              Modi alias suscipit
+            </p>
+          </div>
+            <img src="images/lamp.png" alt="img" class="cont-img">
+      </div>
+      <div class="image" data-name="chandelier">
+        <i class="glyphicon glyphicon-eye-open cont-rev"></i>
+        <img src="images/chandelier icon.png" alt="img" class="cont-ic">
+        <div class="cont-til">
+          <h3 class="ti">Chandellier</h3>
+          <p class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Modi alias suscipit
+          </p>
+        </div>
+          <img src="images/lamp 2.png" alt="img" class="cont-img">
+      </div>
+      <div class="image" data-name="table">
+        <i class="glyphicon glyphicon-eye-open cont-rev"></i>
+        <img src="images/chair.png" alt="img" class="cont-ic">
+        <div class="cont-til">
+          <h3 class="ti">Dining Tables & Chair</h3>
+          <p class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Modi alias suscipit
+          </p>
+        </div>
+          <img src="images/diner.png" alt="img" class="cont-img">
+      </div>
+      <div class="image" data-name="lamp">
+        <i class="glyphicon glyphicon-eye-open cont-rev"></i>
+        <img src="images/lamp icon.png" alt="img" class="cont-ic">
+        <div class="cont-til">
+          <h3 class="ti">Bedroom Lamp</h3>
+          <p class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Modi alias suscipit
+          </p>
+        </div>
+          <img src="images/lamp.png" alt="img" class="cont-img">
+      </div>
+      <div class="image" data-name="couch">
+        <i class="glyphicon glyphicon-eye-open cont-rev"></i>
+        <img src="images/sofa icon.png" alt="img" class="cont-ic">
+        <div class="cont-til">
+          <h3 class="ti">Couch</h3>
+          <p class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Modi alias suscipit
+          </p>
+        </div>
+          <img src="images/sofa.png" alt="img" class="cont-img">
+      </div>
+      </div>
+      <div class="preview-box">
+        <div class="details">
+          <span class="title">Image Category: <p></p></span>
+          <span class="glyphicon glyphicon-remove icon"></span>
+        </div>
+        <div class="image-box">
+          <img src="" alt="" class="cont-img">
+          <div class="cont-til">
+            <h3 class="ti"></h3>
+            <p class="p"></p>
+          </div>
+        </div>
+      </div>
+      <div class="shadow"></div>
+    </section>
+
+    <section class="sections purchases">
+       <div class="purchases-dis">
+          <div class="purchases-title">
+            <h2>Crafted with excellent materials</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+              Porro ipsam iure explicabo architecto 
+            </p>
+            <a href="#" class="btn btn-secondary">
+              <span class="text text-1">Explore &#8594;</span>
+              <span class="text text-2" aria-hidden="true">Explore &#8594;</span>
+            </a>
+          </div>
+          <div class="purchases-img">
+            <div class="tile">
+              <div class="tile-shop">
+                <div class="back"></div>
+              <div class="tile-text">
+                <img src="images/lamp 2.png" alt="img" id="shop">
+                <h4>Chandellier</h4>
+                <p>$50.00</p>
+              </div>
+              </div>
+            </div>
+            <div class="tile">
+              <div class="tile-shop">
+                <div class="back"></div>
+              <div class="tile-text">
+                <img src="images/lamp.png" alt="img" id="shop">
+                <h4>Chandellier</h4>
+                <p>$43.00</p>
+              </div>
+              </div>
+            </div>
+            <div class="tile">
+              <div class="tile-shop">
+                <div class="back"></div>
+              <div class="tile-text">
+                <img src="images/diner.png" alt="img" id="shop">
+                <h4>Chandellier</h4>
+                <p>$78.00</p>
+              </div>
+              </div>
+            </div>
+          </div>
+       </div>
+    </section>
+
+    <section class="sections buy" id="purchases">
+      <div class="about-title">
+        <h1>Purchases</h1>
+        <img src="images/separator.svg" alt="img" id="separator">
+      </div>
+      <div class="comments"><p>No&nbsp;Products&nbsp;Added!</p></div>
+      <!--<<section class="sections shop" >
+        <div class="box-container">
+          ?php
+          $select_products = $conn->prepare("SELECT * FROM `products` LIMIT 6");
+          $select_products->execute();
+          if($select_products->rowCount() > 0){
+             while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){
+          ?>
+           <form action="" method="post" class="box image">
+              <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
+              <input type="hidden" name="name" value="<?= $fetch_products['name']; ?>">
+              <input type="hidden" name="price" value="<?= $fetch_products['price']; ?>">
+              <input type="hidden" name="image" value="<?= $fetch_products['image']; ?>">
+              <a href="#" class="glyphicon glyphicon-eye-open eye-rev"></a>
+              <button type="submit" class="glyphicon glyphicon-shopping-cart" name="add_to_cart"></button>
+              <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
+              <a href="" class="cat"><?= $fetch_products['category']; ?></a>
+              <div class="name"><?= $fetch_products['name']; ?></div>
+              <div class="flex">
+                 <div class="price"><span>₦</span><?= $fetch_products['price']; ?></div>
+                 <input type="number" name="qty" class="qty" min="1" max="99" value="1" maxlength="2">
+              </div>
+           </form>
+           <?php
+            }
+            }
+            else{
+                echo '<div class="comments"><p>No&nbsp;Products&nbsp;Added!</p></div>';
+            }
+            ?>
+        </div>
+        <div class="more-btn">
+          <a href="shop.php" class="btn btn-secondary">
+            <span class="text text-1">View All &#8594;</span>
+            <span class="text text-2" aria-hidden="true">View All &#8594;</span>
+          </a>
+        </div>
+        <div class="preview-box-two">
+          <div class="details-two">
+            <span class="title-two">Product Category: <p></p></span>
+            <span class="glyphicon glyphicon-remove icon"></span>
+          </div>
+          <div class="image-box-two">
+            <img src="" alt="" class="prod">
+            <div class="cat-price">
+              <div class="name"></div>
+              <div class="price"><span></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="shadow-two"></div>
+     </section>-->
+    </section>
+
+    <section class="sections contact" id="contact">
+      <div class="about-title">
+        <h1>Contact</h1>
+        <img src="images/separator.svg" alt="img" id="separator">
+      </div>
+      <div class="contact-dis">
+        <img src="images/email.png" alt="img" id="call">
+        <div class="contact-container">
+          <form action="index.php" method="post" autocomplete="" id="contactForm">
+             <h3>Tell us something!</h3>
+             <!--<?php
+              if(isset($_POST['send'])){
+                $name = $_POST['name'];
+                $name = filter_var($name, FILTER_SANITIZE_STRING);
+                $email = $_POST['email'];
+                $email = filter_var($email, FILTER_SANITIZE_STRING);
+                $number = $_POST['tel'];
+                $number = filter_var($number, FILTER_SANITIZE_STRING);
+                $msg = $_POST['message'];
+                $msg = filter_var($msg, FILTER_SANITIZE_STRING);
+                $select_message = $conn->prepare("SELECT * FROM `messages` WHERE name = ? AND email = ? AND number = ? AND message = ?");
+                $select_message->execute([$name, $email, $number, $msg]);
+                if($select_message->rowCount() > 0){
+                    $message[] = 'Already sent message!';
+                }
+                else{
+                    $insert_message = $conn->prepare("INSERT INTO `messages`(user_id, name, email, number, message) VALUES(?,?,?,?,?)");
+                    $insert_message->execute([$user_id, $name, $email, $number, $msg]);
+                    $message[] = 'Sent message successfully!';
+                }
+              }
+              ?>-->
+             <label for="name">Your Name</label>
+             <div class="contact-icon">
+              <i class="glyphicon glyphicon-user"></i>
+             <input type="text" name="name" id="name" maxlength="50" placeholder="Enter Your Name">
+             </div>
+             <label for="email">Email Address</label>
+             <div class="contact-icon">
+              <i class="glyphicon glyphicon-envelope"></i>
+             <input type="email" name="email" id="email" maxlength="50" placeholder="Enter Email Address">
+             </div>
+             <label for="email">Phone Number</label>
+             <div class="contact-icon">
+              <i class="glyphicon glyphicon-phone"></i>
+              <input type="tel" name="tel" min="0" max="9999999999"placeholder="Provide Phone Number" required maxlength="10">
+             </div>
+             <label for="Message">Message</label>
+             <div class="contact-icon">
+              <i class="glyphicon glyphicon-comment"></i>
+             <textarea name="message" id="message" cols="5" rows="4" placeholder="How can we help you?"></textarea>
+             </div>
+             <input type="submit" name="send" id="submit" value="Submit"></input>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- END BODY SECTION -->
+
+    <!-- FOOTER SECTION -->
+    <footer class="panel-footer">
+      <div class="footer-content">
+        <div class="f1">
+        <div class="footer-logo">
+          <a href="#"><h1>flo<span>RA's</span></h1></a>
+          <p>&copy; Copyright Flora's 2023</p>
+          <p>&reg; All Rights reserved</p>
+        </div>
+        <div class="footer-list list1">
+          <h1>What to Know</h1>
+          <ul>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Locations</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms and Conditions</a></li>
+          </ul>
+        </div>
+        </div>
+        <div class="f2">
+          <div class="footer-list list2">
+          <h1>Shop guide</h1>
+          <ul>
+            <li><a href="#">Know your style</a></li>
+            <li><a href="#">Sales and discounts</a></li>
+            <li><a href="#">Return policy</a></li>
+            <li><a href="#">Shipping Costs</a></li>
+          </ul>
+        </div>
+        <div class="footer-news">
+          <h1>Newsletter</h1>
+          <p>Suscribe to our newsletter</p>
+          <form action="index.php" method="post" autocomplete="" id="newsletter">
+           <!--<?php 
+            $userEmail = ""; //first we leave email field blank
+            if(isset($_POST['subscribe'])){ //if subscribe btn clicked
+              $userEmail = $_POST['email']; //getting user entered email
+              if(filter_var($userEmail, FILTER_VALIDATE_EMAIL)){ //validating user email
+                $subject = "Thanks for Subscribing us - Flora's";
+                $message = "Thanks for subscribing to our blog. You'll always receive updates from us. And we won't share and sell your information.";
+                $sender = "From: ikuerowob@gmail.com";
+                //php function to send mail
+                if(mail($userEmail, $subject, $message, $sender)){
+                  ?>
+                  <div class="alert success-alert">
+                    <?php echo "Thanks for Subscribing us." ?>
+                  </div>
+                  <?php
+                  $userEmail = "";
+                }else{
+                  ?>
+                  <div class="alert error-alert">
+                  <?php echo "Failed while sending your mail!" ?>
+                  </div>
+                  <?php
+                }
+              }else{
+                ?>
+                <div class="alert error-alert">
+                  <?php echo "$userEmail is not a valid email address!" ?>
+                </div>
+                <?php
+              }
+            }
+            ?>-->
+          <div class="news-sus">
+            <input type="text" name="news" id="news" placeholder="Enter Email" required> <!--value="<?php echo $userEmail ?>"-->
+            <i class="glyphicon glyphicon-envelope"></i>
+          </div>
+          <input type="submit" name="suscribe" value="Suscribe!" id="suscribe">
+        </form>
+        </div>
+      </div>
+      </div>
+      <div class="socials">
+        <a href="#"><img src="images/facebook.svg" alt="img" id="social-icon"></a>
+        <a href="#"><img src="images/instagram.svg" alt="img" id="social-icon"></a>
+        <a href="#"><img src="images/twitter.svg" alt="img" id="social-icon"></a>
+        <a href="#"><img src="images/youtube.svg" alt="img" id="social-icon"></a>
+      </div>
+      <!--<p class="recom">Designed by guru</p>-->
+    </footer>
+    <!-- END FOOTER SECTION -->
+    <!-- SCRIPT SECTION -->
+    <script src="js/user.js"></script>
+    <!-- END SCRIPT SECTION -->
+</html>
