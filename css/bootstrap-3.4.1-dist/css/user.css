@@ -547,7 +547,7 @@ span.separator {
 }
 .wrapper nav{
     display: grid;
-    grid-template-columns: 400px;
+    grid-template-columns: repeat(auto-fit,minmax(350px, auto));;
     gap: 4em;
     justify-content: center;
     align-items: center;

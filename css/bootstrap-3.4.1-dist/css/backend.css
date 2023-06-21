@@ -233,6 +233,10 @@
     margin-top: 2em;
     text-align: center;
 }
+.comments {
+    margin: auto;
+    width: 300px;
+}
 .comments p {
     text-align: center;
     color: red;
@@ -241,8 +245,6 @@
     font-size: 25px;
     text-transform: uppercase;
     margin-top: 20px;
-    margin-left: 30px;
-    margin-right: 30px;
 }
 .preview-box-two{
     position: fixed;
