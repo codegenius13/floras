@@ -543,23 +543,19 @@ span.separator {
 .wrapper{
     margin: 100px auto;
     max-width: 1100px;
-    margin-top: -10px;
 }
 .wrapper nav{
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(350px, auto));;
-    gap: 4em;
+    display: flex;
     justify-content: center;
-    align-items: center;
-    margin-left: 50px;
 }
 .wrapper .items{
-    max-width: 820px;
+    display: flex;
+    max-width: 720px;
     width: 100%;
+    justify-content: space-between;
 }
 .items span{
     padding: 5px 30px 5px 30px;
-    font-weight: 500;
     cursor: pointer;
     color: black;
     border-radius: 50px;
@@ -656,6 +652,23 @@ span.separator {
 }
 .gal .image.reveal{
     animation: animate 0.4s ease;
+}
+@media (max-width: 700px) {
+    .wrapper nav .items {   
+      max-width: 600px;
+    }
+  }
+@media (max-width: 600px) {
+    .wrapper{
+      margin: 30px auto;
+    }
+    .wrapper nav .items{
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    nav .items span{
+      margin: 5px;
+    }
 }
 @keyframes animate {
     0%{
