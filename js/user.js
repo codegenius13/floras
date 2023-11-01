@@ -15,7 +15,7 @@
        // END STICKY HEADER NAV 
 
        // SMOOTH SCROLL ONCLICK
-       const navLinks = document.querySelectorAll("nav ul li a");
+       /*const navLinks = document.querySelectorAll("nav ul li a");
        navLinks.forEach(function (eachLink) {
        eachLink.addEventListener('click', smoothScroll)
        });
@@ -25,10 +25,7 @@
       const targetSection = document.querySelector(targetID);
       const originalTop = Math.floor(targetSection.getBoundingClientRect().top) -130;
       window.scrollBy({top: originalTop, left: 0, behavior: 'smooth'});
-      //console.log(originalTop);
-
-    /* YOU CAN ADD A POLYFILL SO THAT THE SMOOTH SCROLL CAN WORK
-    ON LOWER BROWSERS */
+  
     };
     // END SMOOTH SCROLL ONCLICK
     // SMOOTH SCROLL ONSCROLL AUTOMATIC
@@ -39,7 +36,6 @@
       let prevCounter = 1;
       let doneResizing;
       resetPagePosition();
-      //console.log(postTops);
       window.addEventListener('scroll', function () {
         pageTop = window.pageYOffset + 200;
         //console.log(pageTop);
@@ -86,7 +82,8 @@
         thisLink.className = 'active';
       };
       // END WHEN THE USER IS RESIZING OR REFRESHING THE PAGE
-    // END SMOOTH SCROLL ONSCROLL AUTOMATIC// Smoothscroll Script...
+    // END SMOOTH SCROLL ONSCROLL AUTOMATIC// Smoothscroll Script...*/
+
     // SIDERBAR CLOSE AND OPEN 
     var open = document.getElementById('show');
     open.addEventListener("click", function () {
@@ -179,36 +176,3 @@ window.onload = ()=>{
     }
   }
 // END GALLERY FILTER
-
-// PURCHASES FILTER
-  const previewBoxTwo = document.querySelector(".preview-box-two"),
-  categoryNameTwo = previewBoxTwo.querySelector(".title-two p"),
-  previewImgTwo = previewBoxTwo.querySelector("img"),
-  previewName = previewBoxTwo.querySelector(".name"),
-  previewPrice = previewBoxTwo.querySelector(".price"),
-  previewNaira = previewBoxTwo.querySelector(".price span"),
-  closeIconTwo = previewBoxTwo.querySelector(".icon"),
-  shadowTwo = document.querySelector(".shadow-two");
-
-  function previewTwo(element){
-    document.querySelector("body").style.overflow = "hidden";
-    let selectedPrevImgTwo = element.querySelector(".prod").src; 
-    let selectedImgCategoryTwo = element.querySelector(".cat").innerText;
-    let selectedName = element.querySelector(".name").innerText;
-    let selectedPrice = element.querySelector(".price").innerText;
-    let selectedNaira = element.querySelector(".price span").innerText; 
-    previewImgTwo.src = selectedPrevImgTwo; 
-    categoryNameTwo.textContent = selectedImgCategoryTwo;
-    previewName.textContent = selectedName;
-    previewPrice.textContent = selectedPrice;
-    previewNaira.textContent = selectedNaira;
-    
-    previewBoxTwo.classList.add("show"); 
-    shadowTwo.classList.add("show");
-    closeIconTwo.onclick = ()=>{ 
-      previewBoxTwo.classList.remove("show"); 
-      shadowTwo.classList.remove("show"); 
-      document.querySelector("body").style.overflow = "auto"; 
-    }
-  } 
-//END PURCHASES FILTER

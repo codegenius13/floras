@@ -1,25 +1,3 @@
-<!--<?php
-include 'components/connect.php';
-session_start();
-if(isset($_SESSION['user_id'])){
-   $user_id = $_SESSION['user_id'];
-}else{
-   $user_id = '';
-};
-include 'components/add_cart.php';
-?>
-<?php
-if(isset($message)){
-   foreach($message as $message){
-      echo '
-      <div class="message">
-         <span>'.$message.'</span>
-         <i class="glyphicon glyphicon-remove" onclick="this.parentElement.remove();"></i>
-      </div>
-      ';
-   }
-}
-?>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,6 +40,29 @@ if(isset($message)){
       </a>
      <!-- END SCROLL BUTTON-->
 
+     <!-- CART SLIDE -->
+     <div class="cart">
+      <h2 class="cart-title">Shop Cart</h2>
+      <div class="cart-content">
+        <!--<div class="cart-box">
+          <img src="black-leather-jacket.jpg" alt="img" class="cart-img">
+          <div class="details-box">
+          <div class="cart-product-title">Leather Jacket</div>
+          <div class="cart-price">$25.04</div>
+          <input type="number" value="1" class="cart-quantity">
+          </div>
+          <i class="glyphicon glyphicon-trash remove"></i>
+        </div>-->
+      </div>
+      <div class="total">
+        <div class="total-title">Total:</div>
+        <div class="total-price">$0.00</div>
+      </div>
+      <button type="button" class="btn-buy">Buy Now</button>
+      <i class="glyphicon glyphicon-remove" id="close"></i>
+    </div>
+     <!-- END CART SLIDE -->
+
     <!-- HEADER SECTION -->
   <div class="review">
   <div class="topbar">
@@ -91,28 +92,18 @@ if(isset($message)){
     <nav class="hidden-sm hidden-xs">
         <ul>
             <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#purchases">Purchases</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <!--<?php
-            $count_cart_items = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
-            $count_cart_items->execute([$user_id]);
-            $total_cart_items = $count_cart_items->rowCount();
-            ?>-->
-            <a href="cart.php" class="btn btn-secondary">
-              <span class="text text-1">View Cart <i class="glyphicon glyphicon-shopping-cart"></i><span>(<!--<?= $total_cart_items; ?>-->0)</span></span>
-              <span class="text text-2" aria-hidden="true">View Cart <i class="glyphicon glyphicon-shopping-cart"></i><span>(<!--<?= $total_cart_items; ?>-->0)</span></span>
+            <li><a href="about.html">About</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="purchases.html">Purchases</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <a href="#" class="btn btn-secondary" id="cart-icon">
+              <span class="text text-1">View Cart <i class="glyphicon glyphicon-shopping-cart"></i><span>(0)</span></span>
+              <span class="text text-2" aria-hidden="true">View Cart <i class="glyphicon glyphicon-shopping-cart"></i><span>(0)</span></span>
             </a>
         </ul>
     </nav>
     <div class="toggle visible-sm visible-xs">
-         <!--<?php
-            $count_cart_items = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
-            $count_cart_items->execute([$user_id]);
-            $total_cart_items = $count_cart_items->rowCount();
-          ?>-->
-       <a href="cart.php"><i class="glyphicon glyphicon-shopping-cart"></i><span>(<!--<?= $total_cart_items; ?>-->0)</span></a>
+       <a href=""><i class="glyphicon glyphicon-shopping-cart"></i><span>(0)</span></a>
        <i class="glyphicon glyphicon-menu-hamburger" id="show"></i>
     </div>
     </div>
@@ -130,13 +121,13 @@ if(isset($message)){
             <hr id="line">
             <li ><span class="separator"></span><a href="#home" class="active">Home</a></li>
             <hr id="line">
-            <li><span class="separator"></span><a href="#about">About</a></li>
+            <li><span class="separator"></span><a href="about.html">About</a></li>
             <hr id="line">
-            <li><span class="separator"></span><a href="#gallery">Gallery</a></li>
+            <li><span class="separator"></span><a href="gallery.html">Gallery</a></li>
             <hr id="line">
-            <li><span class="separator"></span><a href="#purchases">Purchases</a></li>
+            <li><span class="separator"></span><a href="purchases.html">Purchases</a></li>
             <hr id="line">
-            <li><span class="separator"></span><a href="#contact">Contact</a></li>
+            <li><span class="separator"></span><a href="contact.html">Contact</a></li>
             <hr id="line">
         </ul>
         </nav>
@@ -178,11 +169,11 @@ if(isset($message)){
           meets functionality to transform spaces into stunning masterpieces".
         </p>
         <div class="start">
-          <a href="shop.php" class="btn btn-secondary">
+          <a href="purchases.html" class="btn btn-secondary">
             <span class="text text-1">Explore Shop <i class="glyphicon glyphicon-shopping-cart"></i></span>
             <span class="text text-2" aria-hidden="true">Explore Shop <i class="glyphicon glyphicon-shopping-cart"></i></span>
           </a>
-          <a href="#about" class="btn btn-secondary">
+          <a href="about.html" class="btn btn-secondary">
             <span class="text text-1">Learn More &#8595;</span>
             <span class="text text-2" aria-hidden="true">Learn More &#8595;</span>
           </a>
@@ -277,7 +268,7 @@ if(isset($message)){
                 </li>
               </ul>
             </div>
-            <a href="#" class="btn btn-secondary">
+            <a href="about.html" class="btn btn-secondary">
               <span class="text text-1">Read More &#8594;</span>
               <span class="text text-2" aria-hidden="true">Read More &#8594;</span>
             </a>
@@ -424,59 +415,38 @@ if(isset($message)){
         <h1>Purchases</h1>
         <img src="images/separator.svg" alt="img" id="separator">
       </div>
-      <div class="comments"><p>No&nbsp;Products&nbsp;Added!</p></div>
-      <!--<<section class="sections shop" >
-        <div class="box-container">
-          ?php
-          $select_products = $conn->prepare("SELECT * FROM `products` LIMIT 6");
-          $select_products->execute();
-          if($select_products->rowCount() > 0){
-             while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){
-          ?>
-           <form action="" method="post" class="box image">
-              <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
-              <input type="hidden" name="name" value="<?= $fetch_products['name']; ?>">
-              <input type="hidden" name="price" value="<?= $fetch_products['price']; ?>">
-              <input type="hidden" name="image" value="<?= $fetch_products['image']; ?>">
-              <a href="#" class="glyphicon glyphicon-eye-open eye-rev"></a>
-              <button type="submit" class="glyphicon glyphicon-shopping-cart" name="add_to_cart"></button>
-              <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
-              <a href="" class="cat"><?= $fetch_products['category']; ?></a>
-              <div class="name"><?= $fetch_products['name']; ?></div>
-              <div class="flex">
-                 <div class="price"><span>₦</span><?= $fetch_products['price']; ?></div>
-                 <input type="number" name="qty" class="qty" min="1" max="99" value="1" maxlength="2">
-              </div>
-           </form>
-           <?php
-            }
-            }
-            else{
-                echo '<div class="comments"><p>No&nbsp;Products&nbsp;Added!</p></div>';
-            }
-            ?>
-        </div>
-        <div class="more-btn">
-          <a href="shop.php" class="btn btn-secondary">
-            <span class="text text-1">View All &#8594;</span>
-            <span class="text text-2" aria-hidden="true">View All &#8594;</span>
-          </a>
-        </div>
-        <div class="preview-box-two">
-          <div class="details-two">
-            <span class="title-two">Product Category: <p></p></span>
-            <span class="glyphicon glyphicon-remove icon"></span>
-          </div>
-          <div class="image-box-two">
-            <img src="" alt="" class="prod">
-            <div class="cat-price">
-              <div class="name"></div>
-              <div class="price"><span></span></div>
+      <div class="gal">
+        <div class="image-two">
+          <img src="images/lamp 2.png" alt="img" class="cont-img-two prod-img">
+          <div class="cont-til">
+            <h3 class="prod-title">Chandellier</h3>
+            <div>
+              <p class="price">₦50,250.00</p>
+              <i class="glyphicon glyphicon-shopping-cart add" id="cart-shop"></i>
             </div>
           </div>
         </div>
-        <div class="shadow-two"></div>
-     </section>-->
+        <div class="image-two" data-name="Lamp">
+            <img src="images/lamp.png" alt="img" class="cont-img-two prod-img">
+            <div class="cont-til">  
+              <h3 class="prod-title">Bedroom Lamp</h3>
+              <div>
+                <p class="price">₦43,300.00</p>
+                <i class="glyphicon glyphicon-shopping-cart add" id="cart-shop"></i>
+              </div>
+            </div>
+        </div>
+        <div class="image-two" data-name="table">
+            <img src="images/diner.png" alt="img" class="cont-img-two prod-img">
+            <div class="cont-til">  
+              <h3 class="prod-title">Dining Tables & Chair</h3>
+              <div>
+                <p class="price">₦78,000.00</p>
+                <i class="glyphicon glyphicon-shopping-cart add" id="cart-shop"></i>
+              </div>
+            </div>
+        </div>
+    </div>
     </section>
 
     <section class="sections purchases">
@@ -486,7 +456,7 @@ if(isset($message)){
            <p>The marriage of skillful artistry and superior materials produces
             works of timeless beauty and lasting quality. 
            </p>
-           <a href="#" class="btn btn-secondary">
+           <a href="purchases.html" class="btn btn-secondary">
              <span class="text text-1">Explore &#8594;</span>
              <span class="text text-2" aria-hidden="true">Explore &#8594;</span>
            </a>
@@ -536,28 +506,6 @@ if(isset($message)){
         <div class="contact-container">
           <form action="index.php" method="post" autocomplete="" id="contactForm">
              <h3>Tell us something!</h3>
-             <!--<?php
-              if(isset($_POST['send'])){
-                $name = $_POST['name'];
-                $name = filter_var($name, FILTER_SANITIZE_STRING);
-                $email = $_POST['email'];
-                $email = filter_var($email, FILTER_SANITIZE_STRING);
-                $number = $_POST['tel'];
-                $number = filter_var($number, FILTER_SANITIZE_STRING);
-                $msg = $_POST['message'];
-                $msg = filter_var($msg, FILTER_SANITIZE_STRING);
-                $select_message = $conn->prepare("SELECT * FROM `messages` WHERE name = ? AND email = ? AND number = ? AND message = ?");
-                $select_message->execute([$name, $email, $number, $msg]);
-                if($select_message->rowCount() > 0){
-                    $message[] = 'Already sent message!';
-                }
-                else{
-                    $insert_message = $conn->prepare("INSERT INTO `messages`(user_id, name, email, number, message) VALUES(?,?,?,?,?)");
-                    $insert_message->execute([$user_id, $name, $email, $number, $msg]);
-                    $message[] = 'Sent message successfully!';
-                }
-              }
-              ?>-->
              <label for="name">Your Name</label>
              <div class="contact-icon">
               <i class="glyphicon glyphicon-user"></i>
@@ -618,40 +566,8 @@ if(isset($message)){
           <h1>Newsletter</h1>
           <p>Suscribe to our newsletter</p>
           <form action="index.php" method="post" autocomplete="" id="newsletter">
-           <!--<?php 
-            $userEmail = ""; //first we leave email field blank
-            if(isset($_POST['subscribe'])){ //if subscribe btn clicked
-              $userEmail = $_POST['email']; //getting user entered email
-              if(filter_var($userEmail, FILTER_VALIDATE_EMAIL)){ //validating user email
-                $subject = "Thanks for Subscribing us - Flora's";
-                $message = "Thanks for subscribing to our blog. You'll always receive updates from us. And we won't share and sell your information.";
-                $sender = "From: ikuerowob@gmail.com";
-                //php function to send mail
-                if(mail($userEmail, $subject, $message, $sender)){
-                  ?>
-                  <div class="alert success-alert">
-                    <?php echo "Thanks for Subscribing us." ?>
-                  </div>
-                  <?php
-                  $userEmail = "";
-                }else{
-                  ?>
-                  <div class="alert error-alert">
-                  <?php echo "Failed while sending your mail!" ?>
-                  </div>
-                  <?php
-                }
-              }else{
-                ?>
-                <div class="alert error-alert">
-                  <?php echo "$userEmail is not a valid email address!" ?>
-                </div>
-                <?php
-              }
-            }
-            ?>-->
           <div class="news-sus">
-            <input type="text" name="news" id="news" placeholder="Enter Email" required> <!--value="<?php echo $userEmail ?>"-->
+            <input type="text" name="news" id="news" placeholder="Enter Email" required>
             <i class="glyphicon glyphicon-envelope"></i>
           </div>
           <input type="submit" name="suscribe" value="Suscribe!" id="suscribe">
@@ -670,5 +586,6 @@ if(isset($message)){
     <!-- END FOOTER SECTION -->
     <!-- SCRIPT SECTION -->
     <script src="js/user.js"></script>
+    <script src="js/cart.js"></script>
     <!-- END SCRIPT SECTION -->
 </html>
