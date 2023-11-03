@@ -109,6 +109,7 @@ img {
     box-shadow: 0px 2px 2px 0px rgb(228, 170, 95);
     transition: .4s;
     z-index: 10000;
+    overflow: auto;
 }
 .cart.active {
     right: 0;
@@ -117,7 +118,7 @@ img {
     text-align: center;
     font-size: 1.5em;
     font-weight: 600;
-    margin-top: .2em;
+    margin-top: -100px;
 }
 .cart-box {
     display: grid;
@@ -144,11 +145,31 @@ img {
     font-weight: 700;
 }
 .cart-quantity {
-    border: 1px solid black;
+    position: relative;
+    display: flex;
+    justify-content: right;
+    text-align: right;
+    width: 100%;
     outline: rgb(228, 170, 95);
-    width: 2.8rem;
-    text-align: center;
     font-size: 1.5rem;
+}
+.cart-quantity button{
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+.listCard {
+    list-style: none;
+}
+.cart-quantity .count{
+    border: 1px solid rgb(228, 170, 95);
+    padding: 5px 10px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .remove {
     font-size: 25px;
@@ -169,18 +190,7 @@ img {
     margin-left: .8em;
 }
 .btn-buy {
-    display: flex;
-    margin: 1.5rem auto 0 auto;
-    padding: 12px 20px;
-    border: none;
-    background: green;
-    color: white;
-    font-size: 1em;
-    font-weight: 500;
-    cursor: pointer;
-}
-.btn-buy:hover {
-    background-color: rosybrown;
+    text-align: center;
 }
 #close {
     position: absolute;
@@ -3162,6 +3172,9 @@ span.separator {
 /**** SUPER EXTRA SMALL DEVICES *****/       
 /* Samsung Galaxy S8 */
 @media(min-width: 321px) and (max-width: 360px) {
+    .cart {
+        width: 340px;
+    }
     body {
         font-size: 16px;
     }
@@ -3400,6 +3413,9 @@ span.separator {
 }
 /* Samsung Galaxy S9 */
 @media(max-width: 320px) {
+    .cart {
+        width: 320px;
+    }
     .header {
         top: 0;
     }
