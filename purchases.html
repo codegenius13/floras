@@ -56,7 +56,7 @@
         <span class="text text-1">Checkout <i class="glyphicon glyphicon-gift"></i></span>
         <span class="text text-2" aria-hidden="true">Checkout <i class="glyphicon glyphicon-gift"></i></span>
       </a>
-      <i class="glyphicon glyphicon-remove" id="close"></i>
+      <i class="glyphicon glyphicon-remove remove" id="close"></i>
     </div>
      <!-- END CART SLIDE -->
 
@@ -74,13 +74,13 @@
                 <li><a href="purchases.html" class="active">Purchases</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <a href="#" class="btn btn-secondary" id="cart-icon">
-                  <span class="text text-1">View Cart <i class="glyphicon glyphicon-shopping-cart"></i><span>(0)</span></span>
-                  <span class="text text-2" aria-hidden="true">View Cart <i class="glyphicon glyphicon-shopping-cart"></i><span>(0)</span></span>
+                  <span class="text text-1">View Cart <i class="glyphicon glyphicon-shopping-cart"></i><span class="quantity">(0)</span></span>
+                  <span class="text text-2" aria-hidden="true">View Cart <i class="glyphicon glyphicon-shopping-cart"></i><span class="quantity-two">(0)</span></span>
                 </a>
             </ul>
         </nav>
         <div class="toggle visible-sm visible-xs">
-           <a href="#"><i class="glyphicon glyphicon-shopping-cart"></i><span>(0)</span></a>
+           <a href="#" id="cart-icon-two"><i class="glyphicon glyphicon-shopping-cart"></i><span class="quantity-three">(0)</span></a>
            <i class="glyphicon glyphicon-menu-hamburger" id="show"></i>
         </div>
         </div>
@@ -235,7 +235,7 @@
     </footer>
     <!-- END FOOTER SECTION -->
     <!-- SCRIPT SECTION -->
-    <script src="js/user.js"></script>
     <script src="js/purchase.js"></script>
+    <script src="js/cart.js"></script>
     <!-- END SCRIPT SECTION -->
 </html>

@@ -249,15 +249,19 @@ function changeQuantity(key, quantity){
     reloadCard();
 }
 function ready() {
-  var removeCartButton = document.getElementsByClassName("remove");
-  console.log(removeCartButton);
+  var removeCartButton = document.querySelector("#close");
   for (let i= 0; i < removeCartButton.length; i++) {
     var button = removeCartButton[i];
-    button.addEventListener("click", removeCartItem);
+    button.addEventListener("click", (event) => {
+      var buttonClicked = event.target
+      buttonClicked = listCard.remove();
+      var listCard  = document.querySelector(".listCard");
+    });
   }
  }
- function removeCartItem(event) {
+ ready();
+ /*function removeCartItem(event) {
   var buttonClicked = event.target;
   buttonClicked.parentElement.remove();
   changeQuantity();
-}
+}*/
