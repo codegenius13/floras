@@ -417,6 +417,7 @@ span.separator {
 .sidebar-footer .socials #social-icon {
     background-color: white;
 }
+
 .btn {
     position: relative;
     color: white;
@@ -472,14 +473,14 @@ span.separator {
 .btn-secondary {
     background-color: black;
     color: white;
-}
-  
+} 
 .btn-secondary::before { 
     background-color: white; 
 }
 .btn-secondary .text-2 { 
     color: rgb(228, 170, 95); 
 }
+
 .landing {
     display: flex; 
     padding-top: 250px;
@@ -960,6 +961,246 @@ span.separator {
     padding: 10px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+}
+.gateway {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100000;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.425);
+    transition: .3s;
+}
+.gateway-cont {
+    position: absolute;
+    top: 2%;
+    left: 28%;
+    right: 28%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px 20px;
+    background-color: white;
+    box-shadow: 0px 2px 2px 0px rgb(228, 170, 95);
+    overflow: auto;
+    transition: .4s;
+}
+.gateway-cont p {
+    text-transform: uppercase;
+}
+.gate-lg {
+    color: black;
+}
+.gate-lg h1 {
+    font-size: 2em;
+    color: rgb(228, 170, 95);
+}
+.gate-lg h1 span {
+    color: black;
+    text-transform: uppercase;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#pay-form {
+    padding: 20px;
+    border: 1px solid rgb(228, 170, 95);
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.card-lab {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.card-lab label i {
+    margin-left: 7px;
+}
+.card-lab input {
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+}
+.card-lab input:focus {
+    outline: 1px solid rgb(228, 170, 95);
+    border: none;
+    transition: .3s;
+}
+.lock {
+    width: 90%;
+}
+.card-sec {
+    display: flex;
+    justify-content: space-between;
+}
+.pay {
+    position: relative;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    max-width: max-content;
+    border: 1px solid black;
+    background-color: black;
+    border-radius: 30px;
+    padding: 10px;
+    overflow: hidden;
+    z-index: 1;
+    margin-top: 10px;
+    width: 170px;
+    height: 40px;
+}
+  
+.pay::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200%;
+    height: 200%;
+    border-radius: 60%;
+    background-color: black;
+    transition: .4s;
+    z-index: -1;
+}
+.pay .text { 
+    transition: .1s; 
+}
+  
+.pay .text-2 {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: max-content;
+    color: rgb(228, 170, 95);
+}
+  
+.pay:is(:hover, :focus-visible)::before {
+    bottom: -50%; 
+}
+.pay:is(:hover, :focus-visible) .text-1 { 
+    transform: translateY(-40px); 
+}
+.pay:is(:hover, :focus-visible) .text-2 {
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.pay-secondary {
+    background-color: black;
+    color: white;
+} 
+.pay-secondary::before { 
+    background-color: white; 
+}
+.pay-secondary .text-2 { 
+    color: rgb(228, 170, 95); 
+}
+@media (max-width: 940px) {
+    .gateway-cont {
+        top: 2%;
+        left: 20%;
+        right: 20%;
+    }
+}
+@media (max-width: 830px) {
+    .gateway-cont {
+        top: 2%;
+        left: 15%;
+        left: 15%;
+    }
+}
+@media (max-width: 720px) {
+    .gateway-cont {
+        top: 2%;
+        left: 8%;
+        right: 8%;
+    }
+    .gateway-cont h3 {
+        font-size: 16px;
+    }
+    .gateway-cont p {
+        font-size: 16px;
+        text-transform: uppercase;
+    }
+    .card-sec {
+        display: flex;
+        justify-content: center;
+    }
+    .card-lab label {
+        font-size: 16px;
+    }
+    .lock {
+        width: 80%;
+    }
+}
+@media (max-width: 590px) {
+    .gateway-cont {
+        top: 2%;
+        left: 2%;
+        right: 2%;
+    }
+    .gateway-cont h3 {
+        font-size: 16px;
+    }
+    .gateway-cont p {
+        font-size: 16px;
+        text-transform: uppercase;
+        padding: 5px 10px;
+
+    }
+    .pay-form {
+        padding: 10px;
+    }
+    .card-sec {
+        display: flex;
+        justify-content: center;
+    }
+    .card-lab label {
+        font-size: 16px;
+    }
+    .card-lab input {
+        padding: 5px;
+    }
+    .lock {
+        width: 80%;
+    }
+}
+@media (max-width: 550px) {
+    .gateway-cont {
+        top: 4%;
+        left: 1%;
+        right: 1%;
+    }
+    .gateway-cont h3 {
+        font-size: 16px;
+    }
+    .gateway-cont p {
+        font-size: 16px;
+        text-transform: uppercase;
+        padding: 5px 10px;
+
+    }
+    .pay-form {
+        padding: 15px;
+    }
+    .card-sec {
+        display: flex;
+        justify-content: center;
+    }
+    .card-lab label {
+        font-size: 16px;
+    }
+    .card-lab input {
+        padding: 3px;
+    }
+    .lock {
+        width: 80%;
+    }
 }
 
 .contact { 
